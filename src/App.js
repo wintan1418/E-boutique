@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, switch, route } from 'react-router-dom';
-import Header from './components/Header'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './components/Header';
 import ProductDetails from './components/productDetail';
 import ProductListing from './components/productListing';
 
@@ -9,11 +9,14 @@ function App() {
     <div className='App'>
       <Router>
       <Header/>
-      <Route path="/" exact component={ProductListing}/>
-      <Route path="/product/:productId" exact component={ProductDetails}/>
+      <Switch>
+        <Route path="/" exact component={ProductListing}/>
+        <Route path="/product/:productId" exact component={ProductDetails}/>
+        <Route>404 not found</Route>
+      </Switch>
       </Router>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
