@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 const ProductComponents = () => {
  
   const products = useSelector((state) => state.allProducts.products);
-  const renderList = products.map((products) => {
-    const { id, title, image, price, category } = products;
+  const renderList = products.map((product) => {
+    const { id, title, image, price, category } = product;
     return (
       <div className="four wide column" key={id}>
-        <Link to={`/products/${id}`}>
+        <Link to={`/product/${id}`}>
           <div className="ui link cards">
             <div className="card">
               <div className="image">

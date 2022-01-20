@@ -6,27 +6,26 @@ import ProductComponents from "./productComponent";
 
 const ProductListing = () => {
 
-  const products  = useSelector((state) => state);
-  const dispatch  = useDispatch();
+  const products = useSelector((state) => state.allProducts.products);
+  const dispatch = useDispatch();
   const fetchProducts = async () => {
     const response = await axios
-    .get("https://fakestoreapi.com/products/1")
-    .catch((err) => {
-      console.log("Err", err);
-
-    });
+      .get("https://fakestoreapi.com/products")
+      .catch((err) => {
+        console.log("Err: ", err);
+      });
     dispatch(setProducts(response.data));
   };
-  useEffect (() =>{
+
+  useEffect(() => {
     fetchProducts();
   }, []);
-  console.log("products:", products);
+
+  console.log("Products :", products);
   return (
-  <div className="ui grid container">
-    <ProductComponents/>
-  </div>
+    <div className="ui grid container">
+      <ProductComponents />
+    </div>
   );
-    
-  
 };
  export default ProductListing;
